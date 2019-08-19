@@ -53,6 +53,11 @@ class FullscreenActivity : AppCompatActivity() {
         delayedHide(100)
     }
 
+    override fun onResume() {
+        super.onResume()
+        delayedHide(20)
+    }
+
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
