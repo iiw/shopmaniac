@@ -8,9 +8,11 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
+            android:name=".ShopmaniacApplication"
+            android:fullBackupContent="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".ShopmaniacActivity"
+                android:name=".view.ShopmaniacActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/app_name"
                 android:theme="@style/FullscreenTheme">

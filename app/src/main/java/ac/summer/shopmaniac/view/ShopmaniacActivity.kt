@@ -1,17 +1,22 @@
-package ac.summer.shopmaniac
+package ac.summer.shopmaniac.view
 
+import ac.summer.shopmaniac.R
+import ac.summer.shopmaniac.presenter.ShopmaniacPresenter
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import kotlinx.android.synthetic.main.activity_fullscreen.*
+import org.koin.android.ext.android.inject
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 class ShopmaniacActivity : AppCompatActivity() {
+    private val presenter: ShopmaniacPresenter by inject()
+
     private val mHideHandler = Handler()
     @SuppressLint("InlinedApi")
     private val mHidePart2Runnable = Runnable {
@@ -42,6 +47,8 @@ class ShopmaniacActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mVisible = true
+        presenter.attachView(this)
+        presenter.onViewReady()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
