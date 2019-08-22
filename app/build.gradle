@@ -44,4 +44,5 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$room_version"
     // Koin for Android
     implementation 'org.koin:koin-android:2.0.1'
+    implementation 'com.google.android.material:material:1.0.0'
 }
