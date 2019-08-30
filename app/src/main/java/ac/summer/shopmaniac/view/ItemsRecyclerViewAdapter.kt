@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemsRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<ItemViewHolder>() {
+class ItemsRecyclerViewAdapter(context: Context) : RecyclerView.Adapter<ItemViewHolder>() {
     private val inflater = LayoutInflater.from(context)
     private var data: List<ItemRowModel> = listOf()
 
@@ -24,7 +24,7 @@ class ItemsRecyclerViewAdapter(private val context: Context) : RecyclerView.Adap
     }
 
     override fun getItemId(position: Int): Long {
-        return data[position].id.toLong()
+        return data[position].id?.toLong() ?: 0
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {

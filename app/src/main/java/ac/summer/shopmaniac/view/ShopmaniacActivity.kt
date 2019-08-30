@@ -2,12 +2,16 @@ package ac.summer.shopmaniac.view
 
 import ac.summer.shopmaniac.R
 import ac.summer.shopmaniac.domain.ItemRowModel
+import ac.summer.shopmaniac.presenter.IShopmaniacView
 import ac.summer.shopmaniac.presenter.ShopmaniacPresenter
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.widget.EditText
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 import org.koin.android.ext.android.inject
 
@@ -15,10 +19,11 @@ import org.koin.android.ext.android.inject
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class ShopmaniacActivity : AppCompatActivity() {
+class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
     private val presenter: ShopmaniacPresenter by inject()
 
     private val mHideHandler = Handler()
+
     @SuppressLint("InlinedApi")
     private val mHidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
@@ -52,7 +57,15 @@ class ShopmaniacActivity : AppCompatActivity() {
         itemsRecyclerViewAdapter = ItemsRecyclerViewAdapter(applicationContext)
         items_recycler_view.apply {
             adapter = itemsRecyclerViewAdapter
+            layoutManager = LinearLayoutManager(applicationContext)
         }
+        button_add.setOnClickListener {
+            presenter.newItem()
+        }
+        val removeTouchHelper = ItemTouchHelper(ItemSwipeRemoveBehavior())
+        val toggleTouchHelper = ItemTouchHelper(ItemSwipeToggleBehavior())
+        removeTouchHelper.attachToRecyclerView(items_recycler_view)
+        toggleTouchHelper.attachToRecyclerView(items_recycler_view)
         presenter.attachView(this)
         presenter.onViewReady()
     }
@@ -95,8 +108,12 @@ class ShopmaniacActivity : AppCompatActivity() {
         mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
     }
 
-    fun setItems(items: List<ItemRowModel>) {
+    override fun setItems(items: List<ItemRowModel>) {
         itemsRecyclerViewAdapter.update(items)
+    }
+
+    override fun showKeyboardNewItem() {
+        invisible_text.requestFocus()
     }
 
     companion object {
