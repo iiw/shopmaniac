@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="salad">#00552a</color>
+    <color name="primary">#5d4037</color>
+    <color name="primaryDark">#463029</color>
+    <color name="accent">#ffb36c</color>
+    <color name="text">#252323</color>
     <color name="paper">#D5D5D5</color>
-    <color name="sunshine">#fffacd</color>
-    <color name="dusty">#96858F</color>
-    <color name="lavendar">#6d7993</color>
-    <color name="overcast">#9099A2</color>
-    <color name="pen">#2a2a2a</color>
 </resources>

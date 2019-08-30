@@ -1,6 +1,7 @@
 package ac.summer.shopmaniac.view
 
 import ac.summer.shopmaniac.R
+import ac.summer.shopmaniac.domain.ItemRowModel
 import ac.summer.shopmaniac.presenter.ShopmaniacPresenter
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -48,7 +49,7 @@ class ShopmaniacActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mVisible = true
-        itemsRecyclerViewAdapter = ItemsRecyclerViewAdapter()
+        itemsRecyclerViewAdapter = ItemsRecyclerViewAdapter(applicationContext)
         items_recycler_view.apply {
             adapter = itemsRecyclerViewAdapter
         }
@@ -92,6 +93,10 @@ class ShopmaniacActivity : AppCompatActivity() {
     private fun delayedHide(delayMillis: Int) {
         mHideHandler.removeCallbacks(mHideRunnable)
         mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
+    }
+
+    fun setItems(items: List<ItemRowModel>) {
+        itemsRecyclerViewAdapter.update(items)
     }
 
     companion object {

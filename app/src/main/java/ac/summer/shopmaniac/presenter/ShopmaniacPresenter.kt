@@ -15,5 +15,6 @@ class ShopmaniacPresenter {
 
     fun onViewReady() {
         Toast.makeText(view?.applicationContext, "View ready", Toast.LENGTH_LONG).show()
+        view?.setItems(listOf())
     }
 }
