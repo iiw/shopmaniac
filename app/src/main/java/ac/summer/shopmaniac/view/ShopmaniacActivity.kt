@@ -42,7 +42,6 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
     private val mShowPart2Runnable = Runnable {
         // Delayed display of UI elements
         supportActionBar?.show()
-
     }
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
@@ -52,7 +51,7 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_fullscreen)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mVisible = true
         itemsRecyclerViewAdapter = ItemsRecyclerViewAdapter(applicationContext)
         items_recycler_view.apply {
@@ -60,7 +59,7 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
             layoutManager = LinearLayoutManager(applicationContext)
         }
         button_add.setOnClickListener {
-            presenter.newItem()
+            presenter.createNewItem()
         }
         val removeTouchHelper = ItemTouchHelper(ItemSwipeRemoveBehavior())
         val toggleTouchHelper = ItemTouchHelper(ItemSwipeToggleBehavior())
@@ -81,12 +80,12 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100)
+//        delayedHide(0)
     }
 
     override fun onResume() {
         super.onResume()
-        delayedHide(20)
+//        delayedHide(0)
     }
 
     private fun hide() {
@@ -110,10 +109,6 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
 
     override fun setItems(items: List<ItemRowModel>) {
         itemsRecyclerViewAdapter.update(items)
-    }
-
-    override fun showKeyboardNewItem() {
-        invisible_text.requestFocus()
     }
 
     companion object {

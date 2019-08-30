@@ -2,12 +2,30 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
+    android:layout_marginTop="1dp"
     android:background="@color/primary">
 
+    <EditText
+        android:id="@+id/invisible_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:hint="@null"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/paper"
+        android:textCursorDrawable="@null"
+        android:textSize="24sp" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"

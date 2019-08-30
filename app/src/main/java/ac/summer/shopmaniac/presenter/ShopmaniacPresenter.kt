@@ -1,10 +1,14 @@
 package ac.summer.shopmaniac.presenter
 
 import ac.summer.shopmaniac.domain.ItemRowModel
+import android.util.Log
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ShopmaniacPresenter {
     private var view: IShopmaniacView? = null
     private var items: ArrayList<ItemRowModel> = arrayListOf()
+    private var nextId: Int = 1
     fun attachView(activity: IShopmaniacView) {
         view = activity
     }
@@ -18,9 +22,36 @@ class ShopmaniacPresenter {
         view?.setItems(items)
     }
 
-    fun newItem() {
-        items.add(ItemRowModel(type = ItemRowModel.NEW))
+    fun createNewItem() {
+        val oldItems = ArrayList(items)
+        items.clear()
+        items.add(ItemRowModel(type = ItemRowModel.NEW, id = nextId()))
+        items.addAll(oldItems.filter { it.type != ItemRowModel.NEW })
         view?.setItems(items)
-        view?.showKeyboardNewItem()
+    }
+
+    fun setNewItem(title: String) {
+        val oldItems = ArrayList(items)
+        items.clear()
+        items.add(
+            ItemRowModel(
+                id = nextId(),
+                created = (Date().time / 1000).toInt(),
+                isChecked = false,
+                text = title,
+                type = ItemRowModel.NORMAL
+            )
+        )
+        items.addAll(oldItems.filter { it.type != ItemRowModel.NEW })
+        view?.setItems(items)
+    }
+
+    /**
+     * DEBUG
+     */
+    private fun nextId(): Int {
+        Log.w("P", "TODO: REMOVE DEBUG METHOD")
+        nextId++
+        return nextId
     }
 }
