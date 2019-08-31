@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="1dp"
-    android:background="@color/primary">
+    android:layout_marginTop="4dp"
+    android:background="@color/itemBackground"
+    app:elevation="8dp">
 
     <EditText
         android:id="@+id/invisible_text"
@@ -20,7 +22,7 @@
         android:hint="@null"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:textColor="@color/paper"
+        android:textColor="@color/text"
         android:textCursorDrawable="@null"
         android:textSize="24sp" />
 
@@ -34,6 +36,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
-        android:textColor="@color/paper"
+        android:textColor="@color/text"
         android:textSize="24sp" />
 </FrameLayout>

@@ -22,7 +22,15 @@ class ShopmaniacPresenter {
         view?.setItems(items)
     }
 
+    fun onKeyboardVisibilityChanged(isOpen: Boolean) {
+        if (!isOpen) {
+            view?.clearAllFocus()
+            setNewItem(null)
+        }
+    }
+
     fun createNewItem() {
+        view?.setAddButtonVisible(false)
         val oldItems = ArrayList(items)
         items.clear()
         items.add(ItemRowModel(type = ItemRowModel.NEW, id = nextId()))
@@ -30,20 +38,23 @@ class ShopmaniacPresenter {
         view?.setItems(items)
     }
 
-    fun setNewItem(title: String) {
+    fun setNewItem(title: String?) {
         val oldItems = ArrayList(items)
         items.clear()
-        items.add(
-            ItemRowModel(
-                id = nextId(),
-                created = (Date().time / 1000).toInt(),
-                isChecked = false,
-                text = title,
-                type = ItemRowModel.NORMAL
+        if (title != null) {
+            items.add(
+                ItemRowModel(
+                    id = nextId(),
+                    created = (Date().time / 1000).toInt(),
+                    isChecked = false,
+                    text = title,
+                    type = ItemRowModel.NORMAL
+                )
             )
-        )
+        }
         items.addAll(oldItems.filter { it.type != ItemRowModel.NEW })
         view?.setItems(items)
+        view?.setAddButtonVisible(true)
     }
 
     /**

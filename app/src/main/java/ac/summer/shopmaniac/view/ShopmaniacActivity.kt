@@ -8,11 +8,14 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.EditText
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_fullscreen.*
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import org.koin.android.ext.android.inject
 
 /**
@@ -65,6 +68,12 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
         val toggleTouchHelper = ItemTouchHelper(ItemSwipeToggleBehavior())
         removeTouchHelper.attachToRecyclerView(items_recycler_view)
         toggleTouchHelper.attachToRecyclerView(items_recycler_view)
+        KeyboardVisibilityEvent.setEventListener(
+            this
+        ) {
+            Log.d("KEYBOARD", "isOpen: $it")
+            presenter.onKeyboardVisibilityChanged(it)
+        }
         presenter.attachView(this)
         presenter.onViewReady()
     }
@@ -109,6 +118,14 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
 
     override fun setItems(items: List<ItemRowModel>) {
         itemsRecyclerViewAdapter.update(items)
+    }
+
+    override fun setAddButtonVisible(isVisible: Boolean) {
+        button_add.isVisible = isVisible
+    }
+
+    override fun clearAllFocus() {
+        currentFocus?.clearFocus()
     }
 
     companion object {
