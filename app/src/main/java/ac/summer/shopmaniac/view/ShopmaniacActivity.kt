@@ -71,7 +71,6 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
         KeyboardVisibilityEvent.setEventListener(
             this
         ) {
-            Log.d("KEYBOARD", "isOpen: $it")
             presenter.onKeyboardVisibilityChanged(it)
         }
         presenter.attachView(this)
