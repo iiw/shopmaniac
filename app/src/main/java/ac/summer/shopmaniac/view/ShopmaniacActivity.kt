@@ -59,4 +59,8 @@ class ShopmaniacActivity : AppCompatActivity(), IShopmaniacView {
     override fun clearAllFocus() {
         currentFocus?.clearFocus()
     }
+
+    override fun hideSoftKeyboard() {
+        ViewUtil.hideSoftKeyboard(applicationContext, window.decorView.rootView.windowToken)
+    }
 }

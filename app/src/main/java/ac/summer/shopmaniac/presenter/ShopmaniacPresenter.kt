@@ -57,6 +57,14 @@ class ShopmaniacPresenter {
         view?.setAddButtonVisible(true)
     }
 
+    fun removeItem(itemId: Long) {
+        val oldItems = ArrayList(items)
+        items.clear()
+        items.addAll(oldItems.filter { it.id?.toLong() != itemId })
+        view?.setItems(items)
+        view?.hideSoftKeyboard()
+    }
+
     /**
      * DEBUG
      */

@@ -6,4 +6,5 @@ interface IShopmaniacView {
     fun setItems(items: List<ItemRowModel>)
     fun setAddButtonVisible(isVisible: Boolean)
     fun clearAllFocus()
+    fun hideSoftKeyboard()
 }
