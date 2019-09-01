@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Shopmaniac</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="item_title_example">Some item</string>
+    <string name="remove_item">Delete</string>
+    <string name="done_item">Done</string>
 </resources>

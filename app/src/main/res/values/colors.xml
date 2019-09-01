@@ -6,4 +6,6 @@
     <color name="accent">#ffb36c</color>
     <color name="text">#252323</color>
     <color name="paper">#D5D5D5</color>
+    <color name="error">#B81700</color>
+    <color name="success">#1B831B</color>
 </resources>

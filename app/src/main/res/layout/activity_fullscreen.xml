@@ -27,7 +27,7 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_add_pen_24dp"
-        app:backgroundTint="@color/accent"
+        app:backgroundTint="@color/primaryDark"
         app:elevation="16dp" />
 
 </FrameLayout>

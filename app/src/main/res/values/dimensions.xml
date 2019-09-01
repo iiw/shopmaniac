@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_main">24sp</dimen>
+    <dimen name="text_size_label">18sp</dimen>
+    <dimen name="item_height">48dp</dimen>
+</resources>
