@@ -7,7 +7,10 @@ import kotlin.collections.ArrayList
 
 class ShopmaniacPresenter {
     private var view: IShopmaniacView? = null
-    private var items: ArrayList<ItemRowModel> = arrayListOf()
+    private var items: ArrayList<ItemRowModel> = arrayListOf(
+        ItemRowModel(id = 1, text = "Помидорки", isChecked = false),
+        ItemRowModel(id = 2, text = "Капустка", isChecked = true, type = ItemRowModel.DONE)
+    )
     private var nextId: Int = 1
     fun attachView(activity: IShopmaniacView) {
         view = activity
@@ -61,6 +64,15 @@ class ShopmaniacPresenter {
         val oldItems = ArrayList(items)
         items.clear()
         items.addAll(oldItems.filter { it.id?.toLong() != itemId })
+        view?.setItems(items)
+        view?.hideSoftKeyboard()
+    }
+
+    fun doneItem(itemId: Long) {
+        val oldItems = ArrayList(items)
+        items.clear()
+        oldItems.find { it.id?.toLong() == itemId }?.done()
+        items.addAll(oldItems)
         view?.setItems(items)
         view?.hideSoftKeyboard()
     }

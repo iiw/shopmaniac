@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#5d4037</color>
-    <color name="primaryDark">#463029</color>
+    <color name="primary">#004d45</color>
+    <color name="primaryBak">#5d4037</color>
+    <color name="primaryDark">#003934</color>
+    <color name="primaryDarkBak">#463029</color>
     <color name="itemBackground">#ffffff</color>
     <color name="accent">#ffb36c</color>
     <color name="text">#252323</color>
     <color name="paper">#D5D5D5</color>
     <color name="error">#B81700</color>
     <color name="success">#1B831B</color>
+    <color name="textDone">#565454</color>
+    <color name="itemBackgroundDone">#A2CFBB</color>
+    <color name="textDoneAlternative">#D5D5D5</color>
+    <color name="itemBackgroundDoneAlternative">#749484</color>
 </resources>

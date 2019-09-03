@@ -19,6 +19,10 @@ class ItemsRecyclerViewAdapter(context: Context) : RecyclerView.Adapter<ItemView
         return ItemViewHolder(inflater.inflate(R.layout.item_layout, parent, false))
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return data[position].type
+    }
+
     override fun getItemCount(): Int {
         return data.size
     }

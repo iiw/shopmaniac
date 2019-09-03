@@ -1,9 +1,13 @@
 package ac.summer.shopmaniac.view
 
+import ac.summer.shopmaniac.presenter.ShopmaniacPresenter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class ItemSwipeToggleBehavior : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+class ItemSwipeToggleBehavior : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT), KoinComponent {
+    private val presenter: ShopmaniacPresenter by inject()
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -13,6 +17,6 @@ class ItemSwipeToggleBehavior : ItemTouchHelper.SimpleCallback(0, ItemTouchHelpe
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        presenter.doneItem(viewHolder.itemId)
     }
 }

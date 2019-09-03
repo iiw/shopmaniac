@@ -14,7 +14,7 @@
 
         android:background="@color/itemBackground"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <EditText
             android:id="@+id/invisible_text"
